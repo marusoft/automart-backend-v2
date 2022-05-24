@@ -4,7 +4,8 @@
   "description": "automobile marketplace",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon -r esm app.js"
+    "start": "node -r esm app.js",
+    "start:dev": "nodemon -r esm app.js"
   },
   "keywords": [
     "JavaScript",
