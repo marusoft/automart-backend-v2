@@ -4,12 +4,12 @@ const path = require("path");
 
 // dest or storage	Where to store the files
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./public/data/my-uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, new Date().toISOString() + "-" + file.originalname);
-  },
+  // destination: function (req, file, cb) {
+  //   cb(null, "./uploads");
+  // },
+  // filename: function (req, file, cb) {
+  //   cb(null, new Date().toISOString() + "-" + file.originalname);
+  // },
 });
 
 // fileFilter	Function to control which files are accepted
@@ -26,9 +26,9 @@ const fileFilter = (req, file, cb) => {
 
 // Multer config
 const upload = multer({
-  storage: storage,
+  storage,
   limits: { fileSize: 1024 * 1024 },
-  fileFilter: fileFilter,
+  fileFilter
 });
 
-module.exports = upload;
+export default upload;

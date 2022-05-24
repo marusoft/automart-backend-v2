@@ -29,11 +29,11 @@ app.use((req, res, next) => {
   next();
 });
 //HANDLE ERROR
-app.use((req, res, next) => {
-  const error = new Error("NOT FOUND");
-  error.status = 404;
-  next(error);
-});
+// app.use((req, res, next) => {
+//   const error = new Error("NOT FOUND");
+//   error.status = 404;
+//   next(error);
+// });
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
   res.json({

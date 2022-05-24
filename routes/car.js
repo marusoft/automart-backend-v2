@@ -1,8 +1,7 @@
 import express from "express";
 const router = express.Router();
 
-const upload = require("../utils/multer");
-
+import upload from "../utils/multer";
 import {
   createCar,
   viewACar,
