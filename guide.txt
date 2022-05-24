@@ -1,1 +1,4 @@
 git push heroku develop:master
+
+
+heroku config:set MONGODB_URI="mongodb+srv://username:password@cluster0.xh6tc.mongodb.net/?retryWrites=true&w=majority"
