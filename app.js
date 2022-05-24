@@ -18,9 +18,13 @@ mongoose
 app.use(express.json());
 app.use(cors());
 
-// Route
-// app.use("/api", require("./routes/car"));
+app.get("/", (req, res) => {
+  res.status(200).json({
+    "message": "It all start from localhost"
+  })
+})
 
+// Route
 readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
 
 // port
