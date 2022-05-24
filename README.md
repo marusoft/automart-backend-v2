@@ -7,7 +7,7 @@ A nodejs based REST application. The project will persist data to a mongodb data
 
 ## Installation
 - Clone the repository
-  - > `git clone https://github.com/marusoft/automart-backend.git`
+  - > `git clone https://github.com/marusoft/automart-backend-v2.git`
 
 - Change to this directory
   - > `cd automart-backend`
