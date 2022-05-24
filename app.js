@@ -16,13 +16,38 @@ mongoose
   .catch((error) => console.log("Database connection error", error));
 // Middleware
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+
+// HANDLING CORS ERRORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  if (req.method === "OPTIONS") {
+    res.headers("Access-Control-Allow-Methods", "POST, PUT, GET, DELETE");
+    return res.status(200).json({});
+  }
+  next();
+});
+//HANDLE ERROR
+app.use((req, res, next) => {
+  const error = new Error("NOT FOUND");
+  error.status = 404;
+  next(error);
+});
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message,
+    },
+  });
+});
 
 app.get("/", (req, res) => {
   res.status(200).json({
-    "message": "It all start from localhost"
-  })
-})
+    message: "It all start from localhost",
+  });
+});
 
 // Route
 readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
