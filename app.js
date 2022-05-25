@@ -28,6 +28,11 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.options('/*', (_, res) => {
+  res.sendStatus(200);
+});
+
 //HANDLE ERROR
 // app.use((req, res, next) => {
 //   const error = new Error("NOT FOUND");
